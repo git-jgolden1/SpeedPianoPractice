@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D709F3D524F40AAE00D02416 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709F3D424F40AAE00D02416 /* Metronome.swift */; };
+		D7A51D9C24FD3DE100B4725E /* SpeedPianoPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A51D9B24FD3DE100B4725E /* SpeedPianoPracticeTests.swift */; };
+		D7A51DA42501261B00B4725E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A51DA32501261B00B4725E /* Util.swift */; };
 		D7DC018224DF85540000DA39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC018124DF85540000DA39 /* AppDelegate.swift */; };
 		D7DC018424DF85540000DA39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC018324DF85540000DA39 /* SceneDelegate.swift */; };
 		D7DC018724DF85540000DA39 /* SpeedPianoPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7DC018524DF85540000DA39 /* SpeedPianoPractice.xcdatamodeld */; };
@@ -16,7 +19,22 @@
 		D7DC019124DF85610000DA39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DC018F24DF85610000DA39 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D7A51D9E24FD3DE100B4725E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7DC017624DF85540000DA39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7DC017D24DF85540000DA39;
+			remoteInfo = SpeedPianoPractice;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D709F3D424F40AAE00D02416 /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
+		D7A51D9924FD3DE100B4725E /* SpeedPianoPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedPianoPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A51D9B24FD3DE100B4725E /* SpeedPianoPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedPianoPracticeTests.swift; sourceTree = "<group>"; };
+		D7A51D9D24FD3DE100B4725E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7A51DA32501261B00B4725E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D7DC017E24DF85540000DA39 /* SpeedPianoPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedPianoPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7DC018124DF85540000DA39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7DC018324DF85540000DA39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +47,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D7A51D9624FD3DE100B4725E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7DC017B24DF85540000DA39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7A51D9A24FD3DE100B4725E /* SpeedPianoPracticeTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7A51D9B24FD3DE100B4725E /* SpeedPianoPracticeTests.swift */,
+				D7A51D9D24FD3DE100B4725E /* Info.plist */,
+			);
+			path = SpeedPianoPracticeTests;
+			sourceTree = "<group>";
+		};
 		D7DC017524DF85540000DA39 = {
 			isa = PBXGroup;
 			children = (
 				D7DC018024DF85540000DA39 /* SpeedPianoPractice */,
+				D7A51D9A24FD3DE100B4725E /* SpeedPianoPracticeTests */,
 				D7DC017F24DF85540000DA39 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				D7DC017E24DF85540000DA39 /* SpeedPianoPractice.app */,
+				D7A51D9924FD3DE100B4725E /* SpeedPianoPracticeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +97,8 @@
 				D7DC018124DF85540000DA39 /* AppDelegate.swift */,
 				D7DC018324DF85540000DA39 /* SceneDelegate.swift */,
 				D7DC018824DF85540000DA39 /* ContentView.swift */,
+				D7A51DA32501261B00B4725E /* Util.swift */,
+				D709F3D424F40AAE00D02416 /* Metronome.swift */,
 				D7DC018A24DF85610000DA39 /* Assets.xcassets */,
 				D7DC018F24DF85610000DA39 /* LaunchScreen.storyboard */,
 				D7DC019224DF85610000DA39 /* Info.plist */,
@@ -81,6 +119,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D7A51D9824FD3DE100B4725E /* SpeedPianoPracticeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7A51DA024FD3DE100B4725E /* Build configuration list for PBXNativeTarget "SpeedPianoPracticeTests" */;
+			buildPhases = (
+				D7A51D9524FD3DE100B4725E /* Sources */,
+				D7A51D9624FD3DE100B4725E /* Frameworks */,
+				D7A51D9724FD3DE100B4725E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7A51D9F24FD3DE100B4725E /* PBXTargetDependency */,
+			);
+			name = SpeedPianoPracticeTests;
+			productName = SpeedPianoPracticeTests;
+			productReference = D7A51D9924FD3DE100B4725E /* SpeedPianoPracticeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D7DC017D24DF85540000DA39 /* SpeedPianoPractice */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7DC019524DF85610000DA39 /* Build configuration list for PBXNativeTarget "SpeedPianoPractice" */;
@@ -108,6 +164,10 @@
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Jonathan Gurr";
 				TargetAttributes = {
+					D7A51D9824FD3DE100B4725E = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = D7DC017D24DF85540000DA39;
+					};
 					D7DC017D24DF85540000DA39 = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -127,11 +187,19 @@
 			projectRoot = "";
 			targets = (
 				D7DC017D24DF85540000DA39 /* SpeedPianoPractice */,
+				D7A51D9824FD3DE100B4725E /* SpeedPianoPracticeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D7A51D9724FD3DE100B4725E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7DC017C24DF85540000DA39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,10 +213,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D7A51D9524FD3DE100B4725E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7A51D9C24FD3DE100B4725E /* SpeedPianoPracticeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7DC017A24DF85540000DA39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D709F3D524F40AAE00D02416 /* Metronome.swift in Sources */,
+				D7A51DA42501261B00B4725E /* Util.swift in Sources */,
 				D7DC018724DF85540000DA39 /* SpeedPianoPractice.xcdatamodeld in Sources */,
 				D7DC018224DF85540000DA39 /* AppDelegate.swift in Sources */,
 				D7DC018924DF85540000DA39 /* ContentView.swift in Sources */,
@@ -157,6 +235,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7A51D9F24FD3DE100B4725E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7DC017D24DF85540000DA39 /* SpeedPianoPractice */;
+			targetProxy = D7A51D9E24FD3DE100B4725E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D7DC018F24DF85610000DA39 /* LaunchScreen.storyboard */ = {
@@ -170,6 +256,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D7A51DA124FD3DE100B4725E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QAH6B934V7;
+				INFOPLIST_FILE = SpeedPianoPracticeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathangurr.SpeedPianoPracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPianoPractice.app/SpeedPianoPractice";
+			};
+			name = Debug;
+		};
+		D7A51DA224FD3DE100B4725E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QAH6B934V7;
+				INFOPLIST_FILE = SpeedPianoPracticeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonathangurr.SpeedPianoPracticeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedPianoPractice.app/SpeedPianoPractice";
+			};
+			name = Release;
+		};
 		D7DC019324DF85610000DA39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -220,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -293,6 +421,7 @@
 				DEVELOPMENT_TEAM = QAH6B934V7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SpeedPianoPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +442,7 @@
 				DEVELOPMENT_TEAM = QAH6B934V7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SpeedPianoPractice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,6 +457,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D7A51DA024FD3DE100B4725E /* Build configuration list for PBXNativeTarget "SpeedPianoPracticeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7A51DA124FD3DE100B4725E /* Debug */,
+				D7A51DA224FD3DE100B4725E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D7DC017924DF85540000DA39 /* Build configuration list for PBXProject "SpeedPianoPractice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
