@@ -21,21 +21,11 @@ let metronomeClick: SystemSoundID = 1103
 var testCount = 0
 var timer: Timer?
 
-func updateTimer(bpm: Int) {
-	let interval = TimeInterval(60.0 / Double(bpm))
-	if timer != nil {
-		timer?.invalidate()
-	}
-	timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: {t in
-		AudioServicesPlaySystemSound(metronomeClick)
-		log("click!")
-	})
-}
-
 struct ContentView: View {
 	@State var bpm = baseBpm
 	@State var successCount = 0
 	@State var failureCount = 0
+	@State var bpmColor = Color.black
 	
 	let correct: SystemSoundID = 1100
 	let incorrect: SystemSoundID = 1104
@@ -47,19 +37,42 @@ struct ContentView: View {
 	init() {
 		log("contentView.init")
 	}
-
+	
+	func startMetronome() {
+		stopMetronome()
+		let interval = TimeInterval(60.0 / Double(bpm))
+		timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: {t in
+			AudioServicesPlaySystemSound(metronomeClick)
+			log("click!")
+			self.bpmColor = self.bpmColor == Color.black ? Color.orange : Color.black
+		})
+	}
+	
+	func stopMetronome() {
+		if timer != nil {
+			timer?.invalidate()
+			timer = nil
+		}
+	}
+	
+	func updateBPM() {
+		if timer != nil {
+			startMetronome()
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			Spacer()
 			Text("\(bpm) BPM")
 				.font(.largeTitle)
+				.foregroundColor(bpmColor)
 				.onTapGesture {
 					if timer == nil {
-						updateTimer(bpm: self.bpm)
+						self.startMetronome()
 						log("turned on")
 					} else {
-						timer?.invalidate()
-						timer = nil
+						self.stopMetronome()
 						log("turned off")
 					}
 				}
@@ -75,12 +88,13 @@ struct ContentView: View {
 						AudioServicesPlaySystemSound(self.tripleSuccess)
 						self.bpm += bpmIncrementer
 						self.successCount = 0
-						updateTimer(bpm: self.bpm)
+						self.updateBPM()
 					}
 				}) {
 					simpleButton(name: "Success", minWidth: buttonWidth)
 						.foregroundColor(Color.green)
 				}
+				
 				Spacer()
 				Button(action: {
 					AudioServicesPlaySystemSound(self.incorrect)
@@ -89,7 +103,7 @@ struct ContentView: View {
 							if self.bpm != baseBpm {
 								self.bpm -= bpmIncrementer
 								AudioServicesPlaySystemSound(self.tripleFail)
-								updateTimer(bpm: self.bpm)
+								self.updateBPM()
 							}
 							self.failureCount = 0
 						} else {
@@ -103,10 +117,6 @@ struct ContentView: View {
 						.foregroundColor(Color.red)
 				}
 				Spacer()
-				if failureCount > 0 {
-					Text("-\(failureCount)")
-					.foregroundColor(Color.red)
-				}
 			}
 			Spacer()
 
@@ -118,7 +128,7 @@ struct ContentView: View {
 			Button(action: {
 				AudioServicesPlaySystemSound(self.reset)
 				self.bpm = baseBpm
-				updateTimer(bpm: self.bpm)
+				self.updateBPM()
 				self.successCount = 0
 			}) {
 				simpleButton(name: "Reset")
@@ -137,13 +147,22 @@ struct ContentView: View {
 	}
 	
 	func dot(_ i: Int) -> some View {
-		Group {
-			if i < self.successCount {
+		var colorCase = Color.black
+		var repetitionCount = 0
+		if successCount > 0 {
+			colorCase = Color.green
+			repetitionCount = successCount
+		} else if failureCount > 0 {
+			colorCase = Color.red
+			repetitionCount = failureCount
+		}
+		return Group {
+			if i < repetitionCount {
 				Image(systemName: "circle.fill").imageScale(.large)
 			} else {
 				Image(systemName: "circle").imageScale(.large)
 			}
-		}
+		}.foregroundColor(colorCase)
 	}
 }
 
