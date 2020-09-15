@@ -27,11 +27,11 @@ struct ContentView: View {
 	@State var failureCount = 0
 	@State var bpmColor = Color.black
 	
-	let correct: SystemSoundID = 1100
-	let incorrect: SystemSoundID = 1104
+	let correct: SystemSoundID = 1104
+	let incorrect: SystemSoundID = 1100
 	let reset: SystemSoundID = 1073
-	let tripleSuccess: SystemSoundID = 1115
-	let tripleFail: SystemSoundID = 1111
+	let tripleSuccess: SystemSoundID = 1050
+	let tripleFail: SystemSoundID = 1071
 	let buttonWidth: CGFloat = 100
 	
 	init() {
@@ -55,7 +55,7 @@ struct ContentView: View {
 		}
 	}
 	
-	func updateBPM() {
+	func updateBpm() {
 		if timer != nil {
 			startMetronome()
 		}
@@ -73,6 +73,7 @@ struct ContentView: View {
 						log("turned on")
 					} else {
 						self.stopMetronome()
+						self.bpmColor = Color.black
 						log("turned off")
 					}
 				}
@@ -88,7 +89,7 @@ struct ContentView: View {
 						AudioServicesPlaySystemSound(self.tripleSuccess)
 						self.bpm += bpmIncrementer
 						self.successCount = 0
-						self.updateBPM()
+						self.updateBpm()
 					}
 				}) {
 					simpleButton(name: "Success", minWidth: buttonWidth)
@@ -103,7 +104,7 @@ struct ContentView: View {
 							if self.bpm != baseBpm {
 								self.bpm -= bpmIncrementer
 								AudioServicesPlaySystemSound(self.tripleFail)
-								self.updateBPM()
+								self.updateBpm()
 							}
 							self.failureCount = 0
 						} else {
@@ -127,9 +128,13 @@ struct ContentView: View {
 			Spacer()
 			Button(action: {
 				AudioServicesPlaySystemSound(self.reset)
+				AudioServicesPlaySystemSound(4095)
 				self.bpm = baseBpm
-				self.updateBPM()
+				self.updateBpm()
 				self.successCount = 0
+				self.failureCount = 0
+				self.bpmColor = Color.black
+				self.stopMetronome()
 			}) {
 				simpleButton(name: "Reset")
 			}
@@ -152,7 +157,7 @@ struct ContentView: View {
 		if successCount > 0 {
 			colorCase = Color.green
 			repetitionCount = successCount
-		} else if failureCount > 0 {
+		} else if failureCount > 0 && bpm > baseBpm {
 			colorCase = Color.red
 			repetitionCount = failureCount
 		}
