@@ -12,24 +12,28 @@ import Combine
 
 let maxSuccessCount = 3
 let baseBpm = 60
+let maxBpm = 220
 let bpmIncrementer = 10
+let minBpm = bpmIncrementer
 let seconds: TimeInterval = 1
 let ms: TimeInterval = seconds / 1000
 let minutes: TimeInterval = 60 * seconds
-let metronomeClick: SystemSoundID = 1103
+let metronomeClick: SystemSoundID = 1057
 
 var testCount = 0
 var timer: Timer?
 
 struct ContentView: View {
 	@State var bpm = baseBpm
+	@State var textBoxDisplayOn = false
 	@State var successCount = 0
 	@State var failureCount = 0
 	@State var bpmColor = Color.black
+	@State var tempBpm = "0"
 	
 	let correct: SystemSoundID = 1104
 	let incorrect: SystemSoundID = 1100
-	let reset: SystemSoundID = 1073
+	let reset: SystemSoundID = 1254
 	let tripleSuccess: SystemSoundID = 1050
 	let tripleFail: SystemSoundID = 1071
 	let buttonWidth: CGFloat = 100
@@ -64,19 +68,40 @@ struct ContentView: View {
 	var body: some View {
 		VStack {
 			Spacer()
-			Text("\(bpm) BPM")
-				.font(.largeTitle)
-				.foregroundColor(bpmColor)
-				.onTapGesture {
-					if timer == nil {
-						self.startMetronome()
-						log("turned on")
-					} else {
-						self.stopMetronome()
-						self.bpmColor = Color.black
-						log("turned off")
-					}
+			if textBoxDisplayOn {
+				TextField("BPM", text: $tempBpm, onCommit: {
+					let input = Int(self.tempBpm) ?? self.bpm
+					if input > maxBpm { self.bpm = maxBpm }
+					else if input < minBpm { self.bpm = minBpm }
+					else { self.bpm = input / bpmIncrementer * bpmIncrementer }
+					self.textBoxDisplayOn = false
 				}
+				)
+					.font(.largeTitle)
+					.foregroundColor(bpmColor)
+					.frame(width: 120)
+					.textFieldStyle(RoundedBorderTextFieldStyle())
+					.multilineTextAlignment(.center)
+			} else {
+				Text("\(bpm) BPM")
+					.font(.largeTitle)
+					.foregroundColor(bpmColor)
+					.onTapGesture {
+						if timer == nil {
+							self.startMetronome()
+							log("turned on")
+						} else {
+							self.stopMetronome()
+							self.bpmColor = Color.black
+							log("turned off")
+						}
+				}
+				.onLongPressGesture {
+					self.textBoxDisplayOn = true
+					self.tempBpm = String(self.bpm)
+					self.stopMetronome()
+				}
+			}
 			
 			Spacer()
 			HStack {
@@ -101,7 +126,7 @@ struct ContentView: View {
 					AudioServicesPlaySystemSound(self.incorrect)
 					if self.successCount == 0 {
 						if self.failureCount >= 2 {
-							if self.bpm != baseBpm {
+							if self.bpm > minBpm {
 								self.bpm -= bpmIncrementer
 								AudioServicesPlaySystemSound(self.tripleFail)
 								self.updateBpm()
@@ -157,7 +182,7 @@ struct ContentView: View {
 		if successCount > 0 {
 			colorCase = Color.green
 			repetitionCount = successCount
-		} else if failureCount > 0 && bpm > baseBpm {
+		} else if failureCount > 0 && bpm > minBpm {
 			colorCase = Color.red
 			repetitionCount = failureCount
 		}
